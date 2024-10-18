@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import Spinner from '../components/Spinner'
+import Spinner from '../components/Spinner';
 
 const PatientDetails = () => {
     const { id } = useParams();
-    const Nvgt = useNavigate();
+    const navigate = useNavigate();
     const [patient, setPatient] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [nextLoading, setNextLoading] = useState(false);
 
     useEffect(() => {
         const fetchPatient = async () => {
@@ -23,6 +24,13 @@ const PatientDetails = () => {
 
         fetchPatient();
     }, [id]);
+
+    const handleNextClick = () => {
+        setNextLoading(true);
+        setTimeout(() => {
+            navigate('/auth'); 
+        }, 1000); 
+    };
 
     if (loading) {
         return (
@@ -67,8 +75,12 @@ const PatientDetails = () => {
                     </div>
                 </div>
                 <div className="flex justify-center mt-6">
-                    <button className="bg-purple-600 text-white font-semibold py-2 px-6 rounded-md hover:bg-purple-700 transition duration-200" onClick={() => Nvgt('/auth')}>
-                        Next {"->"}
+                    <button
+                        className={`bg-purple-600 text-white font-semibold py-2 px-6 rounded-md hover:bg-purple-700 transition duration-200 ${nextLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        onClick={handleNextClick}
+                        disabled={nextLoading} 
+                    >
+                        {nextLoading ? 'Loading...' : 'Next ->'} 
                     </button>
                 </div>
             </div>

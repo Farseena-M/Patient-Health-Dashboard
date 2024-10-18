@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const authRequestSchema = new mongoose.Schema({
     treatmentType: { type: String, required: true },
     insurancePlan: { type: String, required: true },
-    diagnosisCode: { type: String, required: true },
+    diagnosisCode: { type: Number, required: true },
     status: { type: String, default: 'Pending' },
     dateOfService: { type: Date },
   }, { timestamps: true });

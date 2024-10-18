@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import PatientList from '../components/PatientList';
+import { adminInstance } from '../axios_instance/AdminInstance';
 
 const DashboardPage = () => {
   const [patients, setPatients] = useState([]);
@@ -9,7 +9,7 @@ const DashboardPage = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/api/patients');
+        const res = await adminInstance.get('/api/patients');
         setPatients(res.data.data);
       } catch (error) {
         console.error("Error fetching patients:", error);

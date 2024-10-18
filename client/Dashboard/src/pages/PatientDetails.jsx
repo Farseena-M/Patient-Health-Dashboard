@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
+import { adminInstance } from '../axios_instance/AdminInstance';
 
 const PatientDetails = () => {
     const { id } = useParams();
@@ -13,7 +13,7 @@ const PatientDetails = () => {
     useEffect(() => {
         const fetchPatient = async () => {
             try {
-                const res = await axios.get(`http://localhost:3001/api/patient/${id}`);
+                const res = await adminInstance.get(`/api/patient/${id}`);
                 setPatient(res.data.data);
                 setLoading(false);
             } catch (error) {
@@ -28,8 +28,8 @@ const PatientDetails = () => {
     const handleNextClick = () => {
         setNextLoading(true);
         setTimeout(() => {
-            navigate('/auth'); 
-        }, 1000); 
+            navigate('/auth');
+        }, 1000);
     };
 
     if (loading) {
@@ -78,9 +78,9 @@ const PatientDetails = () => {
                     <button
                         className={`bg-purple-600 text-white font-semibold py-2 px-6 rounded-md hover:bg-purple-700 transition duration-200 ${nextLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                         onClick={handleNextClick}
-                        disabled={nextLoading} 
+                        disabled={nextLoading}
                     >
-                        {nextLoading ? 'Loading...' : 'Next ->'} 
+                        {nextLoading ? 'Loading...' : 'Next ->'}
                     </button>
                 </div>
             </div>

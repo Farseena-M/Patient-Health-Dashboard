@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
+import { adminInstance } from '../axios_instance/AdminInstance';
 
 const AuthPage = () => {
   const formik = useFormik({
@@ -24,8 +24,8 @@ const AuthPage = () => {
     }),
     onSubmit: async (values) => {
       try {
-        const res = await axios.post('http://localhost:3001/api/authRequest/create', values);
-        console.log(res);
+        const res = await adminInstance.post('/api/authRequest/create', values);
+        // console.log(res);
         alert('Authorization request submitted');
         formik.resetForm();
       } catch (error) {
@@ -40,7 +40,7 @@ const AuthPage = () => {
       <div className="bg-white bg-opacity-50 rounded-lg shadow-lg p-8 max-w-lg w-full">
         <form onSubmit={formik.handleSubmit}>
           <h2 className="text-3xl font-bold text-center mb-4 text-purple-800 font-serif">Submit Prior Authorization</h2>
-          
+
           <div className="mb-3">
             <label className="block text-gray-500 mb-1 font-semibold">Treatment Type</label>
             <input
@@ -76,7 +76,7 @@ const AuthPage = () => {
           <div className="mb-3">
             <label className="block text-gray-500 mb-1 font-semibold">Diagnosis Code</label>
             <input
-              type="text"
+              type="number"
               name="diagnosisCode"
               value={formik.values.diagnosisCode}
               onChange={formik.handleChange}

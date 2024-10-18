@@ -19,13 +19,17 @@ const Login = () => {
         }),
         onSubmit: async (values) => {
             setLoading(true);
+            const trimmedValues = {
+                username: values.username.trim(),
+                password: values.password.trim(),
+            };
             try {
-                const res = await axios.post('http://localhost:3001/api/login', values);
-                const adminToken = res.data.token
+                const res = await axios.post('http://localhost:3001/api/login', trimmedValues);
+                const adminToken = res.data.token;
                 localStorage.setItem('adminToken', adminToken);
                 Nvgt('/patients');
             } catch (error) {
-                console.error('Login error:', error);
+                console.error('Login error:', error.response ? error.response.data : error.message);
                 alert('Login failed. Please check your credentials.');
             } finally {
                 setLoading(false);
@@ -34,7 +38,7 @@ const Login = () => {
     });
 
     return (
-        <div className="bg-purple-300 min-h-screen flex items-center justify-center">
+        <div className="bg-purple-200 min-h-screen flex items-center justify-center">
             <div className="bg-white rounded-lg shadow-lg p-8 max-w-lg w-full">
                 <h2 className="text-2xl font-bold text-center text-purple-800 mb-6">Login</h2>
                 <form onSubmit={formik.handleSubmit}>

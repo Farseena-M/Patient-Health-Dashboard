@@ -9,7 +9,7 @@ export const adminLogin = async (req, res) => {
         res.status(200).json({
             message: 'Login success',
             token
-        });
+        });                
     } else {
         res.status(404).json({
             status: 'Not found',

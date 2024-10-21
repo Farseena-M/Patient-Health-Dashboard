@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { FaHeartbeat, FaUserAlt, FaPills, FaFlask } from 'react-icons/fa'; // Import icons
 import Spinner from '../components/Spinner';
 import { adminInstance } from '../axios_instance/AdminInstance';
 import SideBar from '../components/Sidebar';
@@ -54,27 +55,34 @@ const PatientDetails = () => {
         <SideBar />
         <div className="bg-gray-100 min-h-screen p-6 flex items-center justify-center">
             <div className="container mx-auto bg-white rounded-lg border border-gray-300 shadow-md p-6 max-w-md">
-                <h1 className="text-3xl font-extrabold text-purple-800 text-center mb-4">{patient.name}</h1>
+                <h1 className="text-3xl font-extrabold text-purple-800 text-center mb-6">
+                    {patient.name} <FaUserAlt className="inline-block text-purple-700 ml-2" />
+                </h1>
                 <div className="flex justify-center mb-4">
                     <p className="text-lg font-medium border-b-2 border-purple-800 inline-block">
                         Patient Details
                     </p>
                 </div>
                 <div className="grid grid-cols-1 gap-4">
-                    <div className="text-md text-gray-700 text-center">
+                    <div className="text-md text-gray-700 flex items-center justify-center">
+                        <FaUserAlt className="mr-2 text-purple-600" /> 
                         <strong>Age:</strong> {patient.age}
                     </div>
-                    <div className="text-md text-gray-700 text-center">
+                    <div className="text-md text-gray-700 flex items-center justify-center">
+                        <FaHeartbeat className="mr-2 text-purple-600" /> 
                         <strong>Condition:</strong> {patient.condition}
                     </div>
-                    <div className="text-md text-gray-700 text-center">
-                        <strong> Treatment Result:</strong> {patient.treatmentResult}
+                    <div className="text-md text-gray-700 flex items-center justify-center">
+                        <FaHeartbeat className="mr-2 text-purple-600" /> 
+                        <strong>Treatment Result:</strong> {patient.treatmentResult}
                     </div>
-                    <div className="text-md text-gray-700 text-center">
-                        <strong> Medication:</strong> {patient.medication}
+                    <div className="text-md text-gray-700 flex items-center justify-center">
+                        <FaPills className="mr-2 text-purple-600" /> 
+                        <strong>Medication:</strong> {patient.medication}
                     </div>
-                    <div className="text-md text-gray-700 text-center">
-                        <strong> Lab Results:</strong> {patient.labResults}
+                    <div className="text-md text-gray-700 flex items-center justify-center">
+                        <FaFlask className="mr-2 text-purple-600" /> 
+                        <strong>Lab Results:</strong> {patient.labResults}
                     </div>
                 </div>
                 <div className="flex justify-center mt-6">

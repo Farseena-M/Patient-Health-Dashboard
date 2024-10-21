@@ -5,7 +5,7 @@ import AuthPage from './pages/AuthPage.jsx';
 import Login from './pages/Login.jsx';
 import RequestDetails from './pages/RequestDetails.jsx';
 import PatientDetails from './pages/PatientDetails.jsx';
-import PatientList from './components/PatientList.jsx';
+import PatientList from './pages/PatientsList.jsx';
 
 const App = () => {
   return (

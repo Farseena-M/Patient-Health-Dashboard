@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PatientList from '../components/PatientList';
 import { adminInstance } from '../axios_instance/AdminInstance';
+import SideBar from '../components/Sidebar';
 
 const DashboardPage = () => {
   const [patients, setPatients] = useState([]);
@@ -23,6 +24,8 @@ const DashboardPage = () => {
   );
 
   return (
+    <>
+    <SideBar />
     <div className="bg-gray-100 min-h-screen p-6 flex items-center justify-center">
       <div className="container mx-auto bg-white rounded-lg shadow-md p-6 flex flex-col h-full">
         <div className="text-center mb-4">
@@ -42,6 +45,7 @@ const DashboardPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import { adminInstance } from '../axios_instance/AdminInstance';
+import SideBar from '../components/Sidebar';
 
 const PatientDetails = () => {
     const { id } = useParams();
@@ -49,6 +50,8 @@ const PatientDetails = () => {
     }
 
     return (
+        <>
+        <SideBar />
         <div className="bg-gray-100 min-h-screen p-6 flex items-center justify-center">
             <div className="container mx-auto bg-white rounded-lg border border-gray-300 shadow-md p-6 max-w-md">
                 <h1 className="text-3xl font-extrabold text-purple-800 text-center mb-4">{patient.name}</h1>
@@ -85,6 +88,7 @@ const PatientDetails = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

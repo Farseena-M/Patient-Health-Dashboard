@@ -2,8 +2,11 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { adminInstance } from '../axios_instance/AdminInstance';
+import { useNavigate } from 'react-router-dom';
+import SideBar from '../components/Sidebar';
 
 const AuthPage = () => {
+  // const Nvgt = useNavigate()
   const formik = useFormik({
     initialValues: {
       treatmentType: '',
@@ -26,6 +29,7 @@ const AuthPage = () => {
       try {
         const res = await adminInstance.post('/api/authRequest/create', values);
         // console.log(res);
+        // Nvgt('/requestdetails')
         alert('Authorization request submitted');
         formik.resetForm();
       } catch (error) {
@@ -36,6 +40,8 @@ const AuthPage = () => {
   });
 
   return (
+    <>
+    <SideBar />
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="bg-white bg-opacity-50 rounded-lg shadow-lg p-8 max-w-lg w-full">
         <form onSubmit={formik.handleSubmit}>
@@ -110,6 +116,7 @@ const AuthPage = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

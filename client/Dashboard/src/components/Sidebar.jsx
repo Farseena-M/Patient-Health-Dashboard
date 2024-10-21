@@ -33,25 +33,19 @@ const SideBar = () => {
                 <nav className="flex-grow p-4">
                     <ul>
                         <li className="mb-6">
-                            <NavLink to="/patients" className="flex items-center hover:bg-gray-600 hover:shadow-md transition-all duration-300">
+                            <NavLink to="/patients" className="flex items-center hover:bg-purple-800 hover:shadow-md transition-all duration-300">
                                 <FaUserInjured className="mr-3 text-lg" />
                                 <span className="text-lg">Patients</span>
                             </NavLink>
                         </li>
                         <li className="mb-6">
-                            <NavLink to="/auth" className="flex items-center hover:bg-gray-600 hover:shadow-md transition-all duration-300">
-                                <FaUserShield className="mr-3 text-lg" />
-                                <span className="text-lg">Auth Request</span>
-                            </NavLink>
-                        </li>
-                        <li className="mb-6">
-                            <NavLink to="/patientdetails" className="flex items-center hover:bg-gray-600 hover:shadow-md transition-all duration-300">
+                            <NavLink to="/patientdetails" className="flex items-center hover:bg-purple-800 hover:shadow-md transition-all duration-300">
                                 <FaInfoCircle className="mr-3 text-lg" />
                                 <span className="text-lg">Patient Details</span>
                             </NavLink>
                         </li>
                         <li className="mb-6">
-                            <NavLink to="/requestdetails" className="flex items-center hover:bg-gray-600 hover:shadow-md transition-all duration-300">
+                            <NavLink to="/requestdetails" className="flex items-center hover:bg-purple-800 hover:shadow-md transition-all duration-300">
                                 <FaClipboardList className="mr-3 text-lg" />
                                 <span className="text-lg">Request details</span>
                             </NavLink>
@@ -59,7 +53,7 @@ const SideBar = () => {
                         <li className="mb-6">
                             <button
                                 onClick={handleLogout}
-                                className="flex items-center w-full text-left hover:bg-gray-600 hover:shadow-md transition-all duration-300"
+                                className="flex items-center w-full text-left hover:bg-purple-800 hover:shadow-md transition-all duration-300"
                             >
                                 <FaSignOutAlt className="mr-3 text-lg" />
                                 <span className="text-lg">Logout</span>

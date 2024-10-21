@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
+import Patient from './patientSchema.js';
 
 const authRequestSchema = new mongoose.Schema({
-  // patientId: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient', required: true },
+  patientId: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient', required: true },
   treatmentType: { type: String, required: true },
   insurancePlan: { type: String, required: true },
   diagnosisCode: { type: Number, required: true },
